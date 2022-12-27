@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\Formula;
+use App\Http\Controllers\CRUD;
+
+Route::get('/formulario', [Formula::class,'formular']);
+Route::post('/animals', [Formula::class,'store']);
+Route::get('/formulario/{id}', [Formula::class,'edit']);
+Route::put('/formulario/update/{id}', [Formula::class,'update']);
+
+Route::get('/', [CRUD::class,'comandos']);
+Route::delete('/animals/{id}', [CRUD::class,'destroy']);

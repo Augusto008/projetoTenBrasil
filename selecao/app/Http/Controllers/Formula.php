@@ -15,7 +15,7 @@ class formula extends Controller
 
         $edt = false;
 
-        return view('formulario',['animals' => $animals, 'edt' => $edt]);
+        return view('formulario', ['animals' => $animals, 'edt' => $edt]);
     }
 
     public function store(Request $request) {
@@ -25,7 +25,6 @@ class formula extends Controller
         $animals -> nome = $request -> nome;
         $animals -> resumo = $request -> resumo;
         $animals -> status = $request -> status;
-        //$animals -> image = base64_encode($request->image);
 
         //Recebendo imagem
         if($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -36,9 +35,11 @@ class formula extends Controller
             
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             
-            $requestImage->move(public_path('img/animals'), $imageName);
+            $requestImage->move(public_path('/img'), $imageName);
             
             $animals->image = $imageName;
+            
+            $animals->image64 = base64_encode($request->image);
         }
 
         $animals -> save();
@@ -56,6 +57,24 @@ class formula extends Controller
     }
 
     public function update(Request $request){
+
+        $data = $request->all();
+
+        //Recebendo imagem
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+
+            $requestImage = $request->image;
+            
+            $extension = $requestImage->extension();
+            
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            
+            $requestImage->move(public_path('/img'), $imageName);
+            
+            $animals->image = $imageName;
+            
+            $animals->image64 = base64_encode($request->image);
+        }
 
         Animal::findOrFail($request->id)->update($request->all());
 

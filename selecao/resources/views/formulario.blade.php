@@ -36,9 +36,9 @@
                 <td width="100%" colspan="2">
                     <label class="tituloAtributo" for="nome">Nome: </label><br/>
                     @if($edt == 1)
-                        <input class="campoLinha" id="nome" name="nome" type="text" size="53" maxlength="200" placeholder="Mico-leão-dourado" value="{{ $animals->nome }}" autocomplete="off"/>
+                        <input class="campoLinha" id="nome" name="nome" type="text" size="53" maxlength="200" placeholder="Mico-leão-dourado" value="{{ $animals->nome }}" autocomplete="off" required/>
                     @else
-                        <input class="campoLinha" id="nome" name="nome" type="text" size="53" maxlength="200" placeholder="Mico-leão-dourado" value="" autocomplete="off"/>
+                        <input class="campoLinha" id="nome" name="nome" type="text" size="53" maxlength="200" placeholder="Mico-leão-dourado" value="" autocomplete="off" required/>
                     @endif
                 </td>
             </tr>
@@ -46,23 +46,26 @@
                 <td width="100%" colspan="2">
                     <label class="tituloAtributo" for="resumo">Resumo: </label><br/>
                     @if($edt == 1)
-                        <textarea class="campoMultiLinha" id="resumo" name="resumo" type="text" cols="50" rows="10" placeholder="Pequeno primata brasileiro cuja pelagem lembra ouro." autocomplete="off">{{ $animals->resumo }}</textarea>
+                        <textarea class="campoMultiLinha" id="resumo" name="resumo" type="text" cols="50" rows="10" placeholder="Pequeno primata brasileiro cuja pelagem lembra ouro." autocomplete="off" required>{{ $animals->resumo }}</textarea>
                     @else
-                        <textarea class="campoMultiLinha" id="resumo" name="resumo" type="text" cols="50" rows="10" placeholder="Pequeno primata brasileiro cuja pelagem lembra ouro." autocomplete="off"></textarea>
+                        <textarea class="campoMultiLinha" id="resumo" name="resumo" type="text" cols="50" rows="10" placeholder="Pequeno primata brasileiro cuja pelagem lembra ouro." autocomplete="off" required></textarea>
                     @endif
                 </td>
             </tr>
             <tr>
                 <td width="50%">
+                    @if($edt == 1)
+                        <img class="preview" src="/img/{{ $animals -> image }}" alt="/img/{{ $animals -> image }}">
+                    @endif
                     <label for="image">Imagem: </label><br/>
-                    <input class="imageUpLoad" id="image" type="file" name="image">
+                    <input class="imageUpLoad" id="image" type="file" name="image" required>
                 </td>
                 <td width="50%">
                     @if($edt == 1)
-                        <label class="tituloAtributo" for="status">Ativar status do Cadastro? </label><br/>
+                        <label class="tituloAtributo" for="status" required>Ativar status do Cadastro? </label><br/>
                         <select class="campoSelect" id="status" name="status">
                     @else
-                        <label class="tituloAtributo" for="status">Ativar status do Cadastro? </label><br/>
+                        <label class="tituloAtributo" for="status" required>Ativar status do Cadastro? </label><br/>
                         <select class="campoSelect" id="status" name="status">
                     @endif
                         <option value="true">Sim</option>

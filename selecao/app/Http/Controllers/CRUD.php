@@ -12,7 +12,7 @@ class CRUD extends Controller
     function comandos() {
 
         $animals = Animal::all();
-        
+
         return view('welcome', ['animals' => $animals]);
     }
 

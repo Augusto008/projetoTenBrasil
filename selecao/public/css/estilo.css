@@ -126,6 +126,10 @@ body {
     overflow: hidden;
 }
 
+.preview {
+    width: 100px;
+}
+
 /* ---------------- Textos e Parágragos ---------------- */
 .intro {
     margin: 8px;

@@ -25,12 +25,9 @@
     @if($ani->status == true)
         <button class="cardAnimal">
             <h3 class="nomeAnimal">{{ $ani->id }} - {{$ani->nome}}</h3>
+            <img class="fotoPerfil" src="img/{{$ani->image}}">
             <div class="infoAnimal">
-                {{-- <img src="img/animals/{{ $animals->image }}" alt="{{ $event->title }}"> --}}
-                <p class="info">
-                    Resumo: <br>
-                    {{ $ani->resumo }}
-                </p>
+                <p class="info">{{ $ani->resumo }}</p>
                 <table class="cardControl">
                     <tr>
                         <td size="50%">

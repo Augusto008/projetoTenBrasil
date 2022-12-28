@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('animals', function (Blueprint $table) {
             $table->string('image');
+            $table->binary('image64');
         });
     }
 

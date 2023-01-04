@@ -39,7 +39,7 @@ class formula extends Controller
             
             $animals->image = $imageName;
             
-            $animals->image64 = base64_encode($request->image);
+            $animals->image64 = base64_encode($requestImage);
         }
 
         $animals -> save();
@@ -71,9 +71,9 @@ class formula extends Controller
             
             $requestImage->move(public_path('/img'), $imageName);
             
-            $animals->image = $imageName;
+            $data['image'] = $imageName;
             
-            $animals->image64 = base64_encode($request->image);
+            $data['image64'] = base64_encode($request->image);
         }
 
         Animal::findOrFail($request->id)->update($request->all());

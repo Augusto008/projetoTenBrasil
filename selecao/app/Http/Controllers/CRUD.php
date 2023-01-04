@@ -9,7 +9,7 @@ use App\Models\Animal;
 class CRUD extends Controller
 {
 
-    function comandos() {
+    function commands() {
 
         $animals = Animal::all();
 

@@ -21,5 +21,5 @@ Route::post('/animals', [Formula::class,'store']);
 Route::get('/formulario/{id}', [Formula::class,'edit']);
 Route::put('/formulario/update/{id}', [Formula::class,'update']);
 
-Route::get('/', [CRUD::class,'comandos']);
+Route::get('/', [CRUD::class,'commands']);
 Route::delete('/animals/{id}', [CRUD::class,'destroy']);
